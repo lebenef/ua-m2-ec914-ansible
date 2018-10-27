@@ -9,15 +9,19 @@
   
   tasks:
           - name : Add DotDeb Key
-            apt_key: url=https://www.dotdeb.org/dotdeb.gpg
-         
+            apt_key: 
+            url: https://dotdeb.org/dotdeb.gpg
+                state: present
+                
           - name: Add DotDeb Repo
             apt_repository:
                     repo: deb http://packages.dotdeb.org stable all
                     state: present
-
-                    # - name: Add BackPort Key
-                    # apt_key: url=
+          
+           # - name: Add BackPort Key
+           # apt_key: 
+           #     url: http://archive.debian.org/backports.org/dists/etch-backports/Release.gpg
+           #     state: present
 
           - name: Add BackPort repo
             apt_repository:
