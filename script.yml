@@ -1,0 +1,19 @@
+
+- hosts: 192.168.1.33
+  become: true
+  become_user: linux
+  become_method: sudo
+  connection: ssh  
+  
+  
+  tasks:
+          - name: DotDeb
+            apt_repository:
+                  repo: deb http://packages.dotdeb.org stable all
+                  state: present
+
+          - name: BackPort
+            apt_repository:
+                    repo: deb http://deb.debian.org/debian stretch-backports main contrib non-free 
+                    state: present
+
