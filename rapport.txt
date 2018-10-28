@@ -39,6 +39,9 @@ de Ansible.
 Une fois ceci fait on teste que ansible communique bien avec les serveur cible.
 ```ansible all -m ping```
 
-# Créarion d'un role 
+# Role 
 
-## 
+## Playbook
+
+Nous avons commencé par créer un playbook que l'on appellé script.yml.
+Dans ce playbook nous avons 
