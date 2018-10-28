@@ -1,7 +1,7 @@
 ---
 
 - hosts: all
-  remote_user: linux
+  #remote_user: debian
   roles:
           - role: repository
             become: true
