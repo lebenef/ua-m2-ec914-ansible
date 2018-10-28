@@ -1,34 +1,11 @@
+---
 
-- hosts: 192.168.1.102
-  remote_user: debian
-  become: true
-  become_user: root
-  become_method: su
-  connection: ssh  
+- hosts: all
+  roles:
+          - role: repository
+            remote_user: debian
+            become: true
+            become_user: root
+            become_method: su
+            connection: ssh  
   
-  
-  tasks:
-          - name : Add DotDeb Key
-            apt_key: 
-            url: https://dotdeb.org/dotdeb.gpg
-                state: present
-                
-          - name: Add DotDeb Repo
-            apt_repository:
-                    repo: deb http://packages.dotdeb.org stable all
-                    state: present
-          
-           # - name: Add BackPort Key
-           # apt_key: 
-           #     url: http://archive.debian.org/backports.org/dists/etch-backports/Release.gpg
-           #     state: present
-
-          - name: Add BackPort repo
-            apt_repository:
-                    repo: deb http://deb.debian.org/debian stretch-backports main contrib non-free 
-                    state: present
-          
-          - name: Update and upgrade apt packages
-            apt:
-                    upgrade: dist
-                    update_cache: yes

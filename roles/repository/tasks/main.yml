@@ -1,0 +1,19 @@
+---
+- name : Add DotDeb Key
+  apt_key:
+          url: https://dotdeb.org/dotdeb.gpg
+          state: present
+
+- name: Debian Repo
+  include_tasks: debian/main.yml
+  when: ansible_distribution == "Debian"
+
+- name: Ubuntu Repo
+  include_tasks: ubuntu/main.yml
+  when: ansible_distribution == "Ubuntu"
+ 
+- name: Update and upgrade apt packages
+  apt:
+          upgrade: dist
+          update_cache: yes
+
