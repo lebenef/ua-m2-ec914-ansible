@@ -1,16 +1,17 @@
 - name: Add DotDeb Repo
   apt_repository:
-          repo: deb http://packages.dotdeb.org {{ansible_lsb['codename']}} all
+          repo: deb http://packages.dotdeb.org stable all
           state: present
+          codename: stable
 
-- name: Process
-  include_tasks: process.yml
+- name: Process Arm
+  include_tasks: processar!.yml
   when:
           - ansible_machine|lower == 'armhf' or ansible_machine|lower == 'arm64'
 
 
-- name: Process Arm
-  include_tasks: processarm.yml
+- name: Process
+  include_tasks: process.yml
   when:
-          - ansible_machine|lower != 'armhf' or ansible_machine|lower != 'arm64'
+          - ansible_machine|lower != 'armhf' and  ansible_machine|lower != 'arm64'
 

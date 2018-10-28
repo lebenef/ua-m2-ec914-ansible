@@ -6,6 +6,6 @@
           - role: repository
             become: true
             become_user: root
-            become_method: su
+            become_method: sudo
             connection: ssh  
   
