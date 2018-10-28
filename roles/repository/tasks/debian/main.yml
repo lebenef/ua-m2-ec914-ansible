@@ -1,10 +1,10 @@
 - name: Add DotDeb Repo
   apt_repository:
-          repo: deb http://packages.dotdeb.org stable all
+          repo: deb http://packages.dotdeb.org {{ ansible_lsb['codename'] }} all
           state: present
 
 - name: Add Backport Repo
   apt_repository:
-          repo: deb http://deb.debian.org/debian stretch-backports main contrib non-free
+          repo: deb http://deb.debian.org/debian {{ ansible_lsb['codename'] }}-backports main contrib non-free
           state: present
 

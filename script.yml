@@ -1,9 +1,9 @@
 ---
 
 - hosts: all
+  remote_user: linux
   roles:
           - role: repository
-            remote_user: debian
             become: true
             become_user: root
             become_method: su
