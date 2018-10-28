@@ -1,10 +1,16 @@
 - name: Add DotDeb Repo
   apt_repository:
-          repo: deb http://packages.dotdeb.org {{ ansible_lsb['codename'] }} all
+          repo: deb http://packages.dotdeb.org stable all
           state: present
 
-- name: Add Backport Repo
-  apt_repository:
-          repo: deb http://ports.ubuntu.com/ubuntu-ports {{ ansible_lsb['codename'] }}-backports main contrib non-free
-          state: present
+- name: Process
+  include_tasks: process.yml
+  when:
+          - ansible_machine|lower == 'armhf' or ansible_machine|lower == 'arm64'
+
+
+- name: Process Arm
+  include_tasks: processarm.yml
+  when:
+          - ansible_machine|lower != 'armhf' or ansible_machine|lower != 'arm64'
 
