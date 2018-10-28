@@ -1,6 +1,6 @@
 - name: Add Backport Repo
   apt_repository:
-          repo: deb http://ports.ubuntu.com/ubuntu-ports trusty-backports  restricted universe multiverse
+          repo: deb http://ports.ubuntu.com/ubuntu-ports {{ansible_lsb['codename']}}-backports  restricted universe multiverse
           state: present
 
 

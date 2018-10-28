@@ -1,6 +1,6 @@
 - name: Add DotDeb Repo
   apt_repository:
-          repo: deb http://packages.dotdeb.org stable all
+          repo: deb http://packages.dotdeb.org {{ansible_lsb['codename']}} all
           state: present
 
 - name: Process
