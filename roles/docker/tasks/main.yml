@@ -1,2 +1,34 @@
 ---
-# tasks file for docker
+- name: Upgrade
+  include_tasks: upgrade.yml
+
+- name: Docker Debian
+  include_tasks: debian/app.yml
+  when: ansible_distribution == "Debian"
+
+- name: Docker Ubuntu
+  include_tasks: ubuntu/app.yml
+  when: ansible_distribution == "Ubuntu"
+
+
+- name: Docker APT Key
+  apt_key:
+          url: https://download.docker.com/linux/debian/gpg
+
+- name: Docker Repo Debian
+  include_tasks: debian/repo.yml
+  when: ansible_distribution == "Debian"
+
+- name: Docker Repo Ubuntu
+  include_tasks: ubuntu/repo.yml
+  when: ansible_distribution == "Ubuntu"
+
+- name: Upgrade
+  include_tasks: upgrade.yml
+
+- name: Insall Docker
+  apt:
+          name: docker-ce
+          state: present
+
+

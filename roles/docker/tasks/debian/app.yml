@@ -1,0 +1,13 @@
+---
+- name: Install  App For Docker
+  apt:
+          name: "{{ packages}}"
+          state: present
+          
+  vars: 
+      packages:
+              - apt-transport-https
+              - ca-certificates
+              - curl
+              - gnupg2
+              - software-properties-common

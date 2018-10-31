@@ -1,6 +1,8 @@
 ---
 
 - hosts: all
+  become: true
   roles:
-          - role: repository
-            become: true
+          #          - role: repository
+
+          - role: docker

@@ -1,0 +1,10 @@
+- name: Add Docker Repository
+  apt_repository:
+          repo: "deb [arch=amd64] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+  when: ansible_machine|lower != 'armhf'
+
+- name: Add Docker Repository Armhf
+  apt_repository:
+          repo: "deb [arch=armhf] https://download.docker.com/linux/debian {{ ansible_distribution_release }} stable"
+  when: ansible_machine|lower == 'armhf'
+
