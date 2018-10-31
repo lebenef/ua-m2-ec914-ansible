@@ -1,0 +1,25 @@
+---
+- name: Add Docker Repository
+  apt_repository:
+          repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+  when: ansible_machine|lower != 'armhf' and ansible_machine|lower != 'ppc64el' and ansible_machine|lower != 's390x'
+
+- name: Add Docker Repository Armhf
+  apt_repository:
+          repo:  "deb [arch=armhf] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+  when: ansible_machine|lower == 'armhf'
+
+
+- name: Add Docker Repository IBM Power
+  apt_repository:
+          repo:  "deb [arch=ppc64e1] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+  when: ansible_machine|lower == 'ppc64e1'
+
+
+- name: Add Docker Repository IBM Z
+  apt_repository:
+          repo:  "deb [arch=s390x] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+  when: ansible_machine|lower == 's390x'
+
+
+
