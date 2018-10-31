@@ -26,7 +26,7 @@
 - name: Upgrade
   include_tasks: upgrade.yml
 
-- name: Insall Docker
+- name: Install Docker
   apt:
           name: docker-ce
           state: present
